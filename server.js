@@ -1,6 +1,6 @@
-import https from 'https';
 import cors from 'cors';
 import express from 'express';
+import axios from 'axios';
 const app = express();
 
 const headers = {
@@ -15,22 +15,14 @@ app.use(cors());
 
 app.post('/brs/data', async (req, res) => {
   try {
-    const options = {
-      hostname: 'i.instagram.com',
-      path: `/api/v1/users/web_profile_info/?username=${req.body.input}`,
-      headers: headers,
-    };
-    https
-      .get(options, (r) => {
-        let data = '';
-        r.on('data', (chunk) => {
-          data += chunk;
-        });
-        r.on('end', () => {
-          res.json(data);
-        });
+    const url = `https://i.instagram.com/api/v1/users/web_profile_info/?username=${req.body.input}`;
+
+    axios
+      .get(url, { headers })
+      .then((response) => {
+        res.json(response.data);
       })
-      .on('error', (error) => {
+      .catch((error) => {
         console.error(error);
       });
   } catch (error) {
