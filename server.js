@@ -25,6 +25,6 @@ app.get('/brs/data', async (req, res) => {
   }
 });
 
-app.listen(3000, () => {
+app.listen(5001, () => {
   console.log('Server is running on port 3000');
 });
