@@ -17,6 +17,14 @@ app.post('/brs/data', async (req, res) => {
   }
 });
 
+app.post('/brs/data', async (req, res) => {
+  try {
+    res.json({ error: 'Success' });
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch data' });
+  }
+});
+
 app.listen(5000, () => {
   console.log('Server is running on port 5000');
 });
