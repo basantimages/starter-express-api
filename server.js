@@ -17,7 +17,7 @@ app.post('/brs/data', async (req, res) => {
   }
 });
 
-app.post('/brs/data', async (req, res) => {
+app.get('/brs/data', async (req, res) => {
   try {
     res.json({ error: 'Success' });
   } catch (error) {
