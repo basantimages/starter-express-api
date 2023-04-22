@@ -20,10 +20,11 @@ app.post('/brs/data', async (req, res) => {
     axios
       .get(url, { headers })
       .then((response) => {
+        console.log(response.data);
         res.json(response.data);
       })
       .catch((error) => {
-        console.error(error);
+        console.error(error); 
       });
   } catch (error) {
     res.status(500).json({ error: 'Failed to fetch data' });
